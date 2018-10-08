@@ -41,7 +41,8 @@ class Usuario(AbstractBaseUser):
     ultima_conexion = models.DateTimeField(auto_now_add=True, auto_now=False)
     user_type = models.CharField(max_length=45,choices=user_types,default="Admin")
     visible = models.BooleanField(default=True)
-    clinica = models.ForeignKey(to='Clinica.Clinica')
+    # la clinica con id 1 solo sirve para poder asignar a los admin 
+    clinica = models.ForeignKey(to='Clinica.Clinica',default=1)
     objects = UsuarioManager()
     USERNAME_FIELD = 'username'
     def get_short_name(self):

@@ -25,6 +25,8 @@ urlpatterns = [
     url(r'^$', login_required(InicioView.as_view()),name='inicio'),
     url(r'^administrador/',include('Usuarios.urls', namespace='adminUrl') ),
     url(r'^clinica/',include('Clinica.urls', namespace='clinicaUrl') ),
+    url(r'^paciente/',include('Paciente.urls', namespace='pacienteUrl') ),
+    url(r'^doctor/',include('Doctor.urls', namespace='doctorUrl') ),
     url(r'^login',login,{'template_name':'templates/login.html'},name='login'),
     url(r'^usuario/logout',logout,{'next_page':'login'},name='logout'),
 ]

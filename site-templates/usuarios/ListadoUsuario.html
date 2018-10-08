@@ -36,9 +36,9 @@
                        Acciones <span class="caret"></span>
                      </button>
                      <ul class="dropdown-menu">
-                       <li><a href="#">Bloquear Acceso</a></li>
-                       <li><a href="#">Editar</a></li>
-                       <li><a href="#">Eliminar</a></li>
+                       <li><a href="">Bloquear Acceso</a></li>
+                       <li><a href="{% url 'adminUrl:EditarUsuario' usuario.pk %}">Editar</a></li>
+                       <li><a href="{% url 'adminUrl:EliminarUsuario' usuario.pk %}">Eliminar</a></li>
                      </ul>
                    </div>
                 </td>

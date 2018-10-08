@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from django.views.generic.edit import UpdateView,CreateView
+from django.views.generic.edit import UpdateView,CreateView,DeleteView
 from django.views.generic import ListView, TemplateView,View,DetailView
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth import authenticate, login
@@ -39,3 +39,34 @@ class CrearUsuario(CreateView):
 class ListadoUsuario(ListView):
     model = Usuario
     template_name = 'usuarios/ListadoUsuario.html'
+
+class EditarUsuario(UpdateView):
+    model = Usuario
+    fields = ["nombres","apellidos","username","user_type",
+              "email","telefono","clinica","is_staff"
+    ]
+    template_name = 'usuarios/EditarUsuario.html'
+    success_url = reverse_lazy("adminUrl:ListadoUsuario")
+
+class EliminarUsuario(DeleteView):
+    model = Usuario
+    template_name = 'usuarios/EliminarUsuario.html'
+    success_url = reverse_lazy("adminUrl:ListadoUsuario")
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def hola():
+    return 1
