@@ -13,6 +13,6 @@ class DoctorAdmin(admin.ModelAdmin):
     'fecha_nacimiento',
     'clinica',
     ]
-    form = DoctorModelsForms
+    
 
 admin.site.register(Doctor,DoctorAdmin)

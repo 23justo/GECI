@@ -73,23 +73,23 @@
                             <h3>General</h3>
                             <ul class="nav side-menu">
                                 <li><a href="{% url 'inicio' %}"><i class="fa fa-home"></i> Inicio <span ></span></a>
-                                  <li><a><i class="fa fa-calculator"></i>Opcion #1 <span class="fa fa-chevron-down"></span></a>
+                                  <li><a><i class="fa fa-calculator"></i>Pacientes<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                      <li><a >Listado</a></li>
-                                      <li><a >Agregar</a></li>
+                                      <li><a href='{% url "pacienteUrl:ListadoPaciente" %}'>Listado</a></li>
+                                      <li><a href='{% url "pacienteUrl:CrearPaciente" %}'>Agregar</a></li>
                                     </ul>
                                   </li>
-                                  <li><a><i class="fa fa-money"></i> Opcion #2 <span class="fa fa-chevron-down"></span></a>
+                                  <li><a><i class="fa fa-money"></i> Doctores <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                      <li><a >Listado</a></li>
-                                      <li><a >Agregar</a></li>
+                                      <li><a href='{% url "doctorUrl:ListadoDoctor" %}'>Listado</a></li>
+                                      <li><a href='{% url "doctorUrl:CrearDoctor" %}'>Agregar</a></li>
                                     </ul>
                                   </li>
                                 </li>
-                                <li><a><i class="fa fa-graduation-cap"></i> Opcion #3 <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-graduation-cap"></i> Citas <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a >Listado</a></li>
-                                        <li><a >Agregar</a></li>
+                                        <li><a href='{% url "citaUrl:ListadoCita" %}'>Listado</a></li>
+                                        <li><a href='{% url "citaUrl:CrearCita" %}' >Agregar</a></li>
 
                                     </ul>
                                 </li>
@@ -191,6 +191,7 @@
         </div>
 
     </div>
+    
 
 
     <!-- jQuery -->
@@ -198,7 +199,33 @@
     <!-- Bootstrap -->
     <script src='{% static "vendors/bootstrap/dist/js/bootstrap.min.js" %}'></script>
 
-      <script src='{% static "vendors/moment/min/moment.min.js" %}'></script>
+    <script src='{% static "vendors/moment/min/moment.min.js" %}'></script>
+    <!-- FastClick -->
+    <script src='{% static "vendors/fastclick/lib/fastclick.js" %}'></script>
+    <!-- NProgress -->
+    <script src='{% static "vendors/nprogress/nprogress.js" %}'></script>
+    <!-- bootstrap-progressbar -->
+    <script src='{% static "vendors/bootstrap-progressbar/bootstrap-progressbar.min.js" %}'></script>
+    <!-- iCheck -->
+    <script src='{% static "vendors/iCheck/icheck.min.js" %}'></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src='{% static "vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js" %}'></script>
+    <script src='{% static "vendors/jquery.hotkeys/jquery.hotkeys.js" %}'></script>
+    <script src='{% static "vendors/google-code-prettify/src/prettify.js" %}'></script>
+    <!-- jQuery Tags Input -->
+    <script src='{% static "vendors/jquery.tagsinput/src/jquery.tagsinput.js" %}'></script>
+    <!-- Switchery -->
+    <script src='{% static "vendors/switchery/dist/switchery.min.js" %}'></script>
+    <!-- Select2 -->
+    <script src='{% static "vendors/select2/dist/js/select2.full.min.js" %}'></script>
+    <!-- Parsley -->
+    <script src='{% static "vendors/parsleyjs/dist/parsley.min.js" %}'></script>
+    <!-- Autosize -->
+    <script src='{% static "vendors/autosize/dist/autosize.min.js" %}'></script>
+    <!-- jQuery autocomplete -->
+    <script src='{% static "vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js" %}'></script>
+    <!-- starrr -->
+    <script src='{% static "vendors/starrr/dist/starrr.js" %}'></script>
 
     <script src='{% static "vendors/datatables.net/js/jquery.dataTables.min.js" %}'></script>
     <script src='{% static "vendors/datatables.net-bs/js/dataTables.bootstrap.min.js" %}'></script>
@@ -213,14 +240,12 @@
     <script src='{% static "vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js" %}'></script>
     <script src='{% static "vendors/datatables.net-scroller/js/dataTables.scroller.min.js" %}'></script>
 
-    <!-- Custom Theme Scripts -->
     <script src='{% static "build/js/custom.js" %}'></script>
-
-    <script src='{% static "vendors/moment/min/moment.min.js"%}'></script>
-  <script src='{% static "vendors/bootstrap-daterangepicker/daterangepicker.js" %}'></script>
-  <script src='{% static "vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js" %}'></script>
-  <script src='{% static "vendors/Chart.js/dist/Chart.min.js" %}'></script>
-
+    <script src='{% static "vendors/moment/locale/es.js"%}'></script>
+    <script src='{% static "vendors/bootstrap-daterangepicker/daterangepicker.js" %}'></script>
+    <script src='{% static "vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js" %}'></script>
+    <script src='{% static "vendors/Chart.js/dist/Chart.min.js" %}'></script>
+    {% block body_bottom %} {% endblock %}
 </body>
 
 </html>

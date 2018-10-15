@@ -26,7 +26,8 @@ urlpatterns = [
     url(r'^administrador/',include('Usuarios.urls', namespace='adminUrl') ),
     url(r'^clinica/',include('Clinica.urls', namespace='clinicaUrl') ),
     url(r'^paciente/',include('Paciente.urls', namespace='pacienteUrl') ),
+    url(r'^cita/',include('Cita.urls', namespace='citaUrl') ),
     url(r'^doctor/',include('Doctor.urls', namespace='doctorUrl') ),
     url(r'^login',login,{'template_name':'templates/login.html'},name='login'),
-    url(r'^usuario/logout',logout,{'next_page':'login'},name='logout'),
+    url(r'^logout',logout,{'next_page':'login'},name='logout'),
 ]

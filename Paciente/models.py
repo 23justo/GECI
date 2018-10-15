@@ -22,3 +22,5 @@ class Paciente(models.Model):
     seguro = models.CharField(max_length=100)
     descripcion = models.TextField()
     clinica = models.ForeignKey(to='Clinica.Clinica')
+    def __str__(self):
+        return self.nombres + "," + self.apellidos
