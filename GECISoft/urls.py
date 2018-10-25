@@ -13,9 +13,23 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url,include
 from django.contrib import admin
-
+from Usuarios.views import InicioView
+from django.contrib.auth.views import login,logout_then_login,logout
+from django.contrib.auth.decorators import login_required
+from django.conf.urls.static import static
+from django.conf import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', login_required(InicioView.as_view()),name='inicio'),
+    url(r'^administrador/',include('Usuarios.urls', namespace='adminUrl') ),
+    url(r'^clinica/',include('Clinica.urls', namespace='clinicaUrl') ),
+    url(r'^paciente/',include('Paciente.urls', namespace='pacienteUrl') ),
+    url(r'^cita/',include('Cita.urls', namespace='citaUrl') ),
+    url(r'^doctor/',include('Doctor.urls', namespace='doctorUrl') ),
+    url(r'^movimientocita/',include('Contable.urls', namespace='movimientocitaUrl') ),
+    url(r'^login',login,{'template_name':'templates/login.html'},name='login'),
+    url(r'^logout',logout,{'next_page':'login'},name='logout'),
+    url(r'^auth/', include('social_django.urls', namespace='social')),
 ]

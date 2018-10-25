@@ -1,0 +1,253 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title id="titulo"></title>
+
+    <!-- Bootstrap -->
+    <link href='{% static "vendors/bootstrap/dist/css/bootstrap.min.css" %}' rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href='{% static "vendors/font-awesome/css/font-awesome.min.css" %}' rel="stylesheet">
+
+    <link href='{% static "vendors/bootstrap-daterangepicker/daterangepicker.css" %}' rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href='{% static "build/css/custom.css" %}' rel="stylesheet">
+    <!-- Datatables -->
+    <link href='{% static "vendors/datatables.net-bs/css/dataTables.bootstrap.min.css"%}' rel="stylesheet">
+    <link href='{% static "vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css"%}' rel="stylesheet">
+    <link href='{% static "vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css"%}' rel="stylesheet">
+    <link href='{% static "vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css"%}' rel="stylesheet">
+    <link href='{% static "vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css"%}' rel="stylesheet">
+
+
+
+    <!-- DatePicker -->
+    <link href='{% static "vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css"%}' rel="stylesheet">
+    {% block head %}
+     {% endblock %}
+
+</head>
+
+<body class="nav-md" >
+
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+
+                    </div>
+
+                    <div style="padding-left:12%;">
+                    <!-- <img src='{% static "imagenes/logo1.png" %}' width="85%"> -->
+                    </div>
+
+
+                    <div class="profile clearfix">
+
+                      <div class="profile_info">
+                          <span>Bienvenido</span>
+                          <h2>{{user.nombre}}</h2>
+                          <h2>{{user.username}}</h2>
+                      </div>
+                        {% block username %}
+                         {% endblock %}
+                    </div>
+
+
+                    <br />
+
+
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        {% if not user.is_admin %}
+                        <div class="menu_section">
+                            <h3>General</h3>
+                            <ul class="nav side-menu">
+                                <li><a href="{% url 'inicio' %}"><i class="fa fa-home"></i> Inicio <span ></span></a>
+                                  <li><a><i class="fa fa-calculator"></i>Pacientes<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                      <li><a href='{% url "pacienteUrl:ListadoPaciente" %}'>Listado</a></li>
+                                      <li><a href='{% url "pacienteUrl:CrearPaciente" %}'>Agregar</a></li>
+                                    </ul>
+                                  </li>
+                                  <li><a><i class="fa fa-money"></i> Doctores <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                      <li><a href='{% url "doctorUrl:ListadoDoctor" %}'>Listado</a></li>
+                                      <li><a href='{% url "doctorUrl:CrearDoctor" %}'>Agregar</a></li>
+                                    </ul>
+                                  </li>
+                                </li>
+                                <li><a><i class="fa fa-graduation-cap"></i> Citas <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href='{% url "citaUrl:ListadoCita" %}'>Listado</a></li>
+                                        <li><a href='{% url "citaUrl:CrearCita" %}' >Agregar</a></li>
+
+                                    </ul>
+                                </li>
+                                <li><a><i class="fa fa-group"></i> Movimientos Contables <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href='{% url "movimientocitaUrl:BaseContable" %}'>Listado</a></li>
+                                    </ul>
+                                </li>
+                                <li><a><i class="fa fa-globe"></i> Opcion #5 <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a >Listado</a></li>
+                                        <li><a >Agregar</a></li>
+                                    </ul>
+                                </li>
+                                <li><a><i class="fa fa-bar-chart-o"></i> Opcion #6 <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a >Listado</a></li>
+                                        <li><a >Agregar</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesion</a></li>
+
+                            </ul>
+                        </div>
+                        {% endif %}
+                        {% if user.is_admin %}
+                        <div class="menu_section">
+                            <h3>Sistema</h3>
+                            <ul class="nav side-menu">
+                                <li><a><i class="fa fa-user"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="{% url 'adminUrl:ListadoUsuario' %}" >Listado</a></li>
+                                        <li><a href="{% url 'adminUrl:CrearUsuario' %}">Agregar</a></li>
+
+
+                                    </ul>
+                                </li>
+                                <li><a><i class="fa fa-file-archive-o"></i>Clinicas<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="{% url 'clinicaUrl:ListadoClinica' %}">Listado</a></li>
+                                        <li><a href="{% url 'clinicaUrl:CrearClinica' %}">Agregar</a></li>
+                                    </ul>
+                                </li>
+                                <li><a><i class="fa fa-exclamation-circle"></i> Opcion #9 <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                    </ul>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                        {% endif %}
+
+
+                    </div>
+
+                    <!-- /sidebar menu -->
+
+                    <!-- /menu footer buttons -->
+
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+            <!-- /top navigation -->
+
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <!-- top tiles -->
+                <div class="row tile_count">
+                    {% block bodyTop %}
+
+                    {% endblock %}
+
+
+                    {% block body %} {% endblock %}
+                </div>
+            </div>
+
+        </div>
+        <div style="padding-left:45%;">
+          <!-- <img src='{% static "imagenes/logo.png" %}'  style="bottom:0;left:100px;margin-right:25px;"width="10%"> -->
+        </div>
+
+    </div>
+    
+
+
+    <!-- jQuery -->
+    <script src='{% static "vendors/jquery/dist/jquery.min.js" %}'></script>
+    <!-- Bootstrap -->
+    <script src='{% static "vendors/bootstrap/dist/js/bootstrap.min.js" %}'></script>
+
+    <script src='{% static "vendors/moment/min/moment.min.js" %}'></script>
+    <!-- FastClick -->
+    <script src='{% static "vendors/fastclick/lib/fastclick.js" %}'></script>
+    <!-- NProgress -->
+    <script src='{% static "vendors/nprogress/nprogress.js" %}'></script>
+    <!-- bootstrap-progressbar -->
+    <script src='{% static "vendors/bootstrap-progressbar/bootstrap-progressbar.min.js" %}'></script>
+    <!-- iCheck -->
+    <script src='{% static "vendors/iCheck/icheck.min.js" %}'></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src='{% static "vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js" %}'></script>
+    <script src='{% static "vendors/jquery.hotkeys/jquery.hotkeys.js" %}'></script>
+    <script src='{% static "vendors/google-code-prettify/src/prettify.js" %}'></script>
+    <!-- jQuery Tags Input -->
+    <script src='{% static "vendors/jquery.tagsinput/src/jquery.tagsinput.js" %}'></script>
+    <!-- Switchery -->
+    <script src='{% static "vendors/switchery/dist/switchery.min.js" %}'></script>
+    <!-- Select2 -->
+    <script src='{% static "vendors/select2/dist/js/select2.full.min.js" %}'></script>
+    <!-- Parsley -->
+    <script src='{% static "vendors/parsleyjs/dist/parsley.min.js" %}'></script>
+    <!-- Autosize -->
+    <script src='{% static "vendors/autosize/dist/autosize.min.js" %}'></script>
+    <!-- jQuery autocomplete -->
+    <script src='{% static "vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js" %}'></script>
+    <!-- starrr -->
+    <script src='{% static "vendors/starrr/dist/starrr.js" %}'></script>
+
+    <script src='{% static "vendors/datatables.net/js/jquery.dataTables.min.js" %}'></script>
+    <script src='{% static "vendors/datatables.net-bs/js/dataTables.bootstrap.min.js" %}'></script>
+    <script src='{% static "vendors/datatables.net-buttons/js/dataTables.buttons.min.js" %}'></script>
+    <script src='{% static "vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js" %}'></script>
+    <script src='{% static "vendors/datatables.net-buttons/js/buttons.flash.min.js" %}'></script>
+    <script src='{% static "vendors/datatables.net-buttons/js/buttons.html5.min.js" %}'></script>
+    <script src='{% static "vendors/datatables.net-buttons/js/buttons.print.min.js" %}'></script>
+    <script src='{% static "vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js" %}'></script>
+    <script src='{% static "vendors/datatables.net-keytable/js/dataTables.keyTable.min.js" %}'></script>
+    <script src='{% static "vendors/datatables.net-responsive/js/dataTables.responsive.min.js" %}'></script>
+    <script src='{% static "vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js" %}'></script>
+    <script src='{% static "vendors/datatables.net-scroller/js/dataTables.scroller.min.js" %}'></script>
+
+    <script src='{% static "build/js/custom.js" %}'></script>
+    <script src='{% static "vendors/moment/locale/es.js"%}'></script>
+    <script src='{% static "vendors/bootstrap-daterangepicker/daterangepicker.js" %}'></script>
+    <script src='{% static "vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js" %}'></script>
+    <script src='{% static "vendors/Chart.js/dist/Chart.min.js" %}'></script>
+    <!-- Angular js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src='{% static "angularjs/main.js" %}'></script>
+
+    {% block body_bottom %} {% endblock %}
+</body>
+
+</html>
