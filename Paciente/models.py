@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 # Create your models here.
 class Paciente(models.Model):
@@ -24,3 +25,7 @@ class Paciente(models.Model):
     clinica = models.ForeignKey(to='Clinica.Clinica')
     def __str__(self):
         return self.nombres + "," + self.apellidos
+    
+    @property
+    def edad(self):
+        return datetime.date.today().year - self.fecha_nacimiento.year 

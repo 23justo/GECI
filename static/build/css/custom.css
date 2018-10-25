@@ -2,6 +2,10 @@
 html , body{
  height:100%;
 }
+.centrado{
+    padding-left:10% !important;
+    padding-top:5% !important; 
+}
 
 .full-width {
  width:100%;
