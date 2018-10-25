@@ -5,7 +5,6 @@ class MovimientoCitaModelsForms(forms.ModelForm):
     class Meta:
         model = MovimientoCita
         fields = [
-        'cita',
         'monto',
         'pagado',
         ]

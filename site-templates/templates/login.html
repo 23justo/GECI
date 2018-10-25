@@ -30,6 +30,13 @@
 <body>
 
 	<div class="limiter">
+			{% if message %}
+			<div class="alert alert-danger alert-dismissible fade in" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+				</button>
+				<strong><h4>{{message}}</h4></strong>
+			</div>
+		{% endif %}
 		<div class="container-login100" style="background-image: url('static/login/images/bg-01.jpg');">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" method="POST">
@@ -54,10 +61,21 @@
 								Iniciar Sesion
 							</button>
 						</div>
-						<p>Otras alternativas</p>
-						<a href="{% url 'social:begin' 'google-oauth2' %}">
-							<button type="button" name="googlebutton" class="btn btn-danger">Google+</button>
-						</a>
+						<div  >
+							<span class="login100-form-title p-b-34 p-t-27">
+								Otras alternativas
+							</span>
+							<div class="row" >
+								<div class="col-md-6">
+									<a href="{% url 'social:begin' 'google-oauth2' %}" class="btn  btn-danger azm-social azm-btn azm-border-bottom azm-google"><i class="fa fa-google"></i> Log in with Google</a>
+								</div>
+								<div class="col-md-6">
+										<a href="{% url 'social:begin' 'facebook' %}" class="btn  btn-primary azm-social azm-btn azm-border-bottom azm-facebook"><i class="fa fa-facebook"></i> Log in with Facebook</a>
+									</div>
+
+
+							</div>
+						</div>
 				</form>
 			</div>
 		</div>
@@ -81,6 +99,7 @@
 	<script src='{% static "login/vendor/countdowntime/countdowntime.js" %}'></script>
 <!--===============================================================================================-->
 	<script src='{% static "login/js/main.js" %}'></script>
+	
 
 </body>
 </html>

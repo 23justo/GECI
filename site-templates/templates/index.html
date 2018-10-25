@@ -66,48 +66,35 @@
 
                     <br />
 
-
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         {% if not user.is_admin %}
                         <div class="menu_section">
                             <h3>General</h3>
                             <ul class="nav side-menu">
                                 <li><a href="{% url 'inicio' %}"><i class="fa fa-home"></i> Inicio <span ></span></a>
-                                  <li><a><i class="fa fa-calculator"></i>Pacientes<span class="fa fa-chevron-down"></span></a>
+                                  <li><a><i class="fa fa-group"></i>Pacientes<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                       <li><a href='{% url "pacienteUrl:ListadoPaciente" %}'>Listado</a></li>
                                       <li><a href='{% url "pacienteUrl:CrearPaciente" %}'>Agregar</a></li>
                                     </ul>
                                   </li>
-                                  <li><a><i class="fa fa-money"></i> Doctores <span class="fa fa-chevron-down"></span></a>
+                                  <li><a><i class="fa fa-user-md"></i> Doctores <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                       <li><a href='{% url "doctorUrl:ListadoDoctor" %}'>Listado</a></li>
                                       <li><a href='{% url "doctorUrl:CrearDoctor" %}'>Agregar</a></li>
                                     </ul>
                                   </li>
                                 </li>
-                                <li><a><i class="fa fa-graduation-cap"></i> Citas <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-calendar"></i> Citas <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href='{% url "citaUrl:ListadoCita" %}'>Listado</a></li>
                                         <li><a href='{% url "citaUrl:CrearCita" %}' >Agregar</a></li>
 
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-group"></i> Movimientos Contables <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-money"></i> Movimientos Contables <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href='{% url "movimientocitaUrl:BaseContable" %}'>Listado</a></li>
-                                    </ul>
-                                </li>
-                                <li><a><i class="fa fa-globe"></i> Opcion #5 <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a >Listado</a></li>
-                                        <li><a >Agregar</a></li>
-                                    </ul>
-                                </li>
-                                <li><a><i class="fa fa-bar-chart-o"></i> Opcion #6 <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a >Listado</a></li>
-                                        <li><a >Agregar</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesion</a></li>
@@ -119,7 +106,7 @@
                         <div class="menu_section">
                             <h3>Sistema</h3>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-user"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-group"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="{% url 'adminUrl:ListadoUsuario' %}" >Listado</a></li>
                                         <li><a href="{% url 'adminUrl:CrearUsuario' %}">Agregar</a></li>
@@ -127,16 +114,14 @@
 
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-file-archive-o"></i>Clinicas<span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-building"></i>Clinicas<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="{% url 'clinicaUrl:ListadoClinica' %}">Listado</a></li>
                                         <li><a href="{% url 'clinicaUrl:CrearClinica' %}">Agregar</a></li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-exclamation-circle"></i> Opcion #9 <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                    </ul>
-                                </li>
+                                <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesion</a></li>
+
 
                             </ul>
 

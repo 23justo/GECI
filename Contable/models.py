@@ -4,7 +4,7 @@ from django.db import models
 class MovimientoCita(models.Model):
     cita = models.ForeignKey(to='Cita.Cita')
     monto = models.FloatField()
-    pagado = models.BooleanField()
+    pagado = models.BooleanField(default=0)
     creado = models.DateTimeField(auto_now=True)
     modificado = models.DateTimeField(auto_now=True)
     

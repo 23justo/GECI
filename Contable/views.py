@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.core import serializers
+from django.views.generic.edit import (UpdateView,CreateView,DeleteView)
 from django.views.generic import (ListView,DetailView,TemplateView)
+from django.core.urlresolvers import reverse_lazy
 from django.db.models import CharField, Value
 import json
 from .models import *
+from .forms import *
 from Cita.models import *
+
 # Create your views here.
 
 class BaseContable(TemplateView):
@@ -26,8 +30,10 @@ def ObtenerMovimientos(request, *args, **kwargs):
             'fecha':mov_cita.fecha,
             'doctor':mov_cita.cita.doctor.nombres+','+mov_cita.cita.doctor.apellidos,
             'doctor_pk':mov_cita.cita.doctor.pk,
+            'pagado':mov_cita.pagado,   
             }
         lista_mov_citas.append(diccionario)
+    print(lista_mov_citas)
     return JsonResponse(json.dumps(lista_mov_citas),safe=False)
 
 def ObtenerMovimientoEspecifico(request, *args, **kwargs):
@@ -36,6 +42,7 @@ def ObtenerMovimientoEspecifico(request, *args, **kwargs):
     diccionario = {
         
         'fecha':mov_cita.fecha,
+        'pagado':mov_cita.pagado,
         #informacion doctor
         'doctor_nombres':mov_cita.cita.doctor.nombres,
         'doctor_apellidos':mov_cita.cita.doctor.apellidos,
@@ -62,3 +69,14 @@ def ObtenerMovimientoEspecifico(request, *args, **kwargs):
     }
     lista_mov_citas.append(diccionario)
     return JsonResponse(json.dumps(lista_mov_citas),safe=False)
+
+class CrearMovimientoCita(CreateView):
+    model = MovimientoCita
+    form_class = MovimientoCitaModelsForms
+    template_name = 'contable/CrearMovimientoCita.html'
+    success_url = reverse_lazy("movimientocitaUrl:BaseContable")
+    def form_valid(self, form):
+        cita = Cita.objects.get(pk = self.kwargs.get('pk'))
+        self.object = form.save(commit=False)
+        self.object.cita = cita
+        return super(CrearMovimientoCita, self).form_valid(form)

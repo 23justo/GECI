@@ -23,7 +23,13 @@ from .forms import UserCreationForm,UserChangeForm
 
 class InicioView(TemplateView):
     template_name = "templates/index.html"
-
+    def dispatch(self, request, *args, **kwargs):
+        if  request.user.is_prueba():
+            messages.success(request, 'No tienes permisos para este apartado!')
+            print(messages)
+            return redirect("logout")
+        return super(InicioView, self).dispatch(request, *args, **kwargs)
+        
 class CrearUsuario(CreateView):
     model = Usuario
     form_class = UserCreationForm
@@ -52,21 +58,3 @@ class EliminarUsuario(DeleteView):
     model = Usuario
     template_name = 'usuarios/EliminarUsuario.html'
     success_url = reverse_lazy("adminUrl:ListadoUsuario")
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def hola():
-    return 1
