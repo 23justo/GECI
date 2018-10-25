@@ -31,4 +31,5 @@ urlpatterns = [
     url(r'^movimientocita/',include('Contable.urls', namespace='movimientocitaUrl') ),
     url(r'^login',login,{'template_name':'templates/login.html'},name='login'),
     url(r'^logout',logout,{'next_page':'login'},name='logout'),
+    url(r'^auth/', include('social_django.urls', namespace='social')),
 ]
