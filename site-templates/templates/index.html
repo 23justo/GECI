@@ -93,11 +93,9 @@
 
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-group"></i> Opcion #4 <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-group"></i> Movimientos Contables <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a >Listado</a></li>
-                                        <li><a >Agregar</a></li>
-
+                                        <li><a href='{% url "movimientocitaUrl:BaseContable" %}'>Listado</a></li>
                                     </ul>
                                 </li>
                                 <li><a><i class="fa fa-globe"></i> Opcion #5 <span class="fa fa-chevron-down"></span></a>
@@ -245,6 +243,10 @@
     <script src='{% static "vendors/bootstrap-daterangepicker/daterangepicker.js" %}'></script>
     <script src='{% static "vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js" %}'></script>
     <script src='{% static "vendors/Chart.js/dist/Chart.min.js" %}'></script>
+    <!-- Angular js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src='{% static "angularjs/main.js" %}'></script>
+
     {% block body_bottom %} {% endblock %}
 </body>
 

@@ -28,6 +28,8 @@ urlpatterns = [
     url(r'^paciente/',include('Paciente.urls', namespace='pacienteUrl') ),
     url(r'^cita/',include('Cita.urls', namespace='citaUrl') ),
     url(r'^doctor/',include('Doctor.urls', namespace='doctorUrl') ),
+    url(r'^movimientocita/',include('Contable.urls', namespace='movimientocitaUrl') ),
     url(r'^login',login,{'template_name':'templates/login.html'},name='login'),
     url(r'^logout',logout,{'next_page':'login'},name='logout'),
+    url(r'^auth/', include('social_django.urls', namespace='social')),
 ]

@@ -7,5 +7,11 @@ class Cita(models.Model):
     doctor = models.ForeignKey(to='Doctor.Doctor')
     paciente = models.ForeignKey(to='Paciente.Paciente')
     descripcion = models.TextField()
-    def __str__(self):
-        return self.fecha_inicio + self.fecha_fin + self.doctor
+    @property
+    def fecha_inicio_formato(self):
+        return self.fecha_inicio.strftime("%d %m %Y")
+    
+    @property
+    def fecha_fin_formato(self):
+        return self.fecha_fin.strftime("%d %m %Y")
+    
