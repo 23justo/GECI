@@ -25,7 +25,7 @@ SECRET_KEY = '+%dl-j_d@x=f()yr1u$rvc4q=7%se8a(i837kzh!z(hc5ysim0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
 
 # Application definition
@@ -154,3 +154,5 @@ LOGIN_URL = 'login'
 AUTH_USER_MODEL = 'Usuarios.usuario'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '871242023022-9dt227o6o658lhmo2nmpao28o6ohhaaj.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '4wHn4GN3rlAa1k2MqfgmXBqp'
+SOCIAL_AUTH_FACEBOOK_KEY = '347134039374915'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'c593285c8ae4f6a84ccd96f3a5b77b99'  # App Secret

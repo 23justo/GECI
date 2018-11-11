@@ -3,10 +3,10 @@ from django.conf import settings
 from django.contrib import auth
 from django.db import models
 from django.contrib.auth.models import  AbstractBaseUser, PermissionsMixin,BaseUserManager
-# Create your models here.
+# Create your models here
 
 class UsuarioManager(BaseUserManager):
-    def create_user(self, username, password=None):
+    def create_user(self, username, password=None,email=None):
         if not username:
             raise ValueError('Ingrese un nombre de usuario valido.')
         usuario = self.model(
@@ -28,18 +28,19 @@ class Usuario(AbstractBaseUser):
         ('Admin','Admin'),
         ('Doctor','Doctor'),
         ('Secretaria','Secretaria'),
+        ('Prueba','Prueba'),
     )
     id = models.AutoField(primary_key = True)
     username = models.CharField(max_length = 45,unique = True)
     nombres = models.CharField(max_length = 150)
     apellidos = models.CharField(max_length = 150)
     especialidad = models.CharField(max_length = 150)
-    email = models.EmailField()
+    email = models.EmailField(null=True)
     telefono = models.CharField(max_length = 12)
     is_staff = models.BooleanField(default = False)
     is_active = models.BooleanField(default = True)
     ultima_conexion = models.DateTimeField(auto_now_add=True, auto_now=False)
-    user_type = models.CharField(max_length=45,choices=user_types,default="Admin")
+    user_type = models.CharField(max_length=45,choices=user_types,default="Prueba")
     visible = models.BooleanField(default=True)
     # la clinica con id 1 solo sirve para poder asignar a los admin 
     clinica = models.ForeignKey(to='Clinica.Clinica',default=1)
@@ -56,6 +57,11 @@ class Usuario(AbstractBaseUser):
             return False
     def is_doctor(self):
         if self.user_type=="Doctor":
+            return True
+        else:
+            return False
+    def is_prueba(self):
+        if self.user_type=="Prueba":
             return True
         else:
             return False

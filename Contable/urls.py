@@ -2,7 +2,7 @@ from django.conf.urls import url,include
 from . import views
 from django.contrib.auth.decorators import login_required
 # from .views import CrearMovimientoCita,ListadoMovimientoCita,EditarMovimientoCita,EliminarMovimientoCita
-from .views import BaseContable,ObtenerMovimientos,ObtenerMovimientoEspecifico
+from .views import BaseContable,ObtenerMovimientos,ObtenerMovimientoEspecifico,CrearMovimientoCita
 
 
 """ ejemplo de url: categorias/registrar """
@@ -15,7 +15,7 @@ url(r'^basecontable$', login_required(BaseContable.as_view()), name='BaseContabl
 url(r'^api-ObtenerMovimientos$', ObtenerMovimientos, name='api-ObtenerMovimientos'),
 url(r'^api-ObtenerMovimientoEspecifico/(?P<pk>\d+)$', ObtenerMovimientoEspecifico, name='api-ObtenerMovimientoEspecifico'),
 
-# url(r'^crearmovimientocita$', login_required(CrearMovimientoCita.as_view()), name='CrearMovimientoCita'),
+url(r'^crearmovimientocita/(?P<pk>\d+)$', login_required(CrearMovimientoCita.as_view()), name='CrearMovimientoCita'),
 # url(r'^listadomovimientocita$', login_required(ListadoMovimientoCita.as_view()), name='ListadoMovimientoCita'),
 # url(r'^editarmovimientocita/(?P<pk>\d+)$', login_required(EditarMovimientoCita.as_view()), name='EditarMovimientoCita'),
 # url(r'^eliminarmovimientocita/(?P<pk>\d+)$', login_required(EliminarMovimientoCita.as_view()), name='EliminarMovimientoCita'),
