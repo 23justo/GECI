@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load staticfiles %}{% load i18n %}
 <style>
     .contenedor{
         border: 1px solid black;
@@ -34,7 +34,7 @@
                 <th >{{cita.doctor.especialidad}}</th>
             </tr>
             <tr>
-                <th >DPI: {{cita.doctor.dpi}}  Direccion: {{cita.doctor.direccion_clinica}}</th>
+                <th >{% trans "DPI:" %} {{cita.doctor.dpi}}  {% trans "Direccion:" %} {{cita.doctor.direccion_clinica}}</th>
             </tr>
             <tr>
                 <th class="separador"></th>

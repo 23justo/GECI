@@ -1,5 +1,5 @@
 {% load staticfiles %}
-
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +28,7 @@
     <link href='{% static "vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css"%}' rel="stylesheet">
     <link href='{% static "vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css"%}' rel="stylesheet">
     <style>
-        {% block style %}
+        {% block style %} 
         {% endblock %}
     </style>
 
@@ -58,7 +58,7 @@
                     <div class="profile clearfix">
 
                       <div class="profile_info">
-                          <span>Bienvenido</span>
+                          <span>{% trans "Bienvenido" %}</span>
                           <h2>{{user.nombre}}</h2>
                           <h2>{{user.username}}</h2>
                       </div>
@@ -74,56 +74,56 @@
                         <div class="menu_section">
                             <h3>General</h3>
                             <ul class="nav side-menu">
-                                <li><a href="{% url 'inicio' %}"><i class="fa fa-home"></i> Inicio <span ></span></a>
-                                  <li><a><i class="fa fa-group"></i>Pacientes<span class="fa fa-chevron-down"></span></a>
+                                <li><a href="{% url 'inicio' %}"><i class="fa fa-home"></i> {% trans "Inicio" %} <span ></span></a>
+                                  <li><a><i class="fa fa-group"></i>{% trans "Pacientes" %}<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                      <li><a href='{% url "pacienteUrl:ListadoPaciente" %}'>Listado</a></li>
-                                      <li><a href='{% url "pacienteUrl:CrearPaciente" %}'>Agregar</a></li>
+                                      <li><a href='{% url "pacienteUrl:ListadoPaciente" %}'>{% trans "Listado" %}</a></li>
+                                      <li><a href='{% url "pacienteUrl:CrearPaciente" %}'>{% trans "Agregar" %}</a></li>
                                     </ul>
                                   </li>
-                                  <li><a><i class="fa fa-user-md"></i> Doctores <span class="fa fa-chevron-down"></span></a>
+                                  <li><a><i class="fa fa-user-md"></i> {% trans "Doctores" %} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                      <li><a href='{% url "doctorUrl:ListadoDoctor" %}'>Listado</a></li>
-                                      <li><a href='{% url "doctorUrl:CrearDoctor" %}'>Agregar</a></li>
+                                      <li><a href='{% url "doctorUrl:ListadoDoctor" %}'> {% trans "Listado" %}</a></li>
+                                      <li><a href='{% url "doctorUrl:CrearDoctor" %}'>{% trans "Agregar" %}</a></li>
                                     </ul>
                                   </li>
                                 </li>
                                 <li><a><i class="fa fa-calendar"></i> Citas <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href='{% url "citaUrl:ListadoCita" %}'>Listado</a></li>
-                                        <li><a href='{% url "citaUrl:CrearCita" %}' >Agregar</a></li>
+                                        <li><a href='{% url "citaUrl:ListadoCita" %}'>{% trans "Listado" %}</a></li>
+                                        <li><a href='{% url "citaUrl:CrearCita" %}' >{% trans "Agregar" %}</a></li>
 
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-money"></i> Movimientos Contables <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-money"></i> {% trans "Movimientos Contables" %} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href='{% url "movimientocitaUrl:BaseContable" %}'>Listado</a></li>
+                                        <li><a href='{% url "movimientocitaUrl:BaseContable" %}'>{% trans "Listado" %}</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesion</a></li>
+                                <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out pull-right"></i> {% trans "Cerrar Sesion" %}</a></li>
 
                             </ul>
                         </div>
                         {% endif %}
                         {% if user.is_admin %}
                         <div class="menu_section">
-                            <h3>Sistema</h3>
+                            <h3>{% trans "Sistema" %}</h3>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-group"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-group"></i> {% trans "Usuarios" %} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{% url 'adminUrl:ListadoUsuario' %}" >Listado</a></li>
-                                        <li><a href="{% url 'adminUrl:CrearUsuario' %}">Agregar</a></li>
+                                        <li><a href="{% url 'adminUrl:ListadoUsuario' %}" >{% trans "Listado" %}</a></li>
+                                        <li><a href="{% url 'adminUrl:CrearUsuario' %}">{% trans "Agregar" %}</a></li>
 
 
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-building"></i>Clinicas<span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-building"></i>{% trans "Clinicas" %}<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{% url 'clinicaUrl:ListadoClinica' %}">Listado</a></li>
-                                        <li><a href="{% url 'clinicaUrl:CrearClinica' %}">Agregar</a></li>
+                                        <li><a href="{% url 'clinicaUrl:ListadoClinica' %}">{% trans "Listado" %}</a></li>
+                                        <li><a href="{% url 'clinicaUrl:CrearClinica' %}">{% trans "Agregar" %}</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesion</a></li>
+                                <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out pull-right"></i> {% trans "Cerrar Sesion" %}</a></li>
 
 
                             </ul>

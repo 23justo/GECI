@@ -20,8 +20,15 @@ from django.contrib.auth.views import login,logout_then_login,logout
 from django.contrib.auth.decorators import login_required
 from django.conf.urls.static import static
 from django.conf import settings
+from django.conf.urls.i18n import i18n_patterns
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^login',login,{'template_name':'templates/login.html'},name='login'),
+    url(r'^logout',logout,{'next_page':'login'},name='logout'),
+    url(r'^auth/', include('social_django.urls', namespace='social')),
+]
+
+urlpatterns += i18n_patterns(
     url(r'^$', login_required(InicioView.as_view()),name='inicio'),
     url(r'^administrador/',include('Usuarios.urls', namespace='adminUrl') ),
     url(r'^clinica/',include('Clinica.urls', namespace='clinicaUrl') ),
@@ -29,7 +36,4 @@ urlpatterns = [
     url(r'^cita/',include('Cita.urls', namespace='citaUrl') ),
     url(r'^doctor/',include('Doctor.urls', namespace='doctorUrl') ),
     url(r'^movimientocita/',include('Contable.urls', namespace='movimientocitaUrl') ),
-    url(r'^login',login,{'template_name':'templates/login.html'},name='login'),
-    url(r'^logout',logout,{'next_page':'login'},name='logout'),
-    url(r'^auth/', include('social_django.urls', namespace='social')),
-]
+)
