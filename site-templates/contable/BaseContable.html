@@ -1,5 +1,15 @@
 {% extends 'Templates/index.html' %} {% load widget_tweaks %}
-    {% block body %}
+{% block style %}
+    .custom-class{
+        background-color: #cde8d5
+    }
+
+    .default-color{
+        background-color: #f7a694
+    }
+{% endblock %}
+</style>    
+{% block body %}
     <div class="row">
         <div class="col-md-9 col-sm-9 col-xs-12 centrado">
             {% if message %}
@@ -36,15 +46,13 @@
                                 <th>Paciente</th>
                                 <th>Monto</th>
                                 <th>Fecha</th>
-                                <th>Pagado</th>
                             </tr>
-                            <tr ng-repeat="movimiento in movimientos | filter:searchText">
-                                <td><a href="" ng-click="obtenermovimientos_data(movimiento.pk)">{{movimiento.orden}}</a></td>
-                                <td>{{movimiento.doctor}}</td>
-                                <td>{{movimiento.paciente}}</td>
-                                <td>{{movimiento.monto}}</td>
-                                <td>{{movimiento.fecha}}</td>
-                                <td>{{movimiento.pagado}}</td>
+                            <tr  ng-repeat="movimiento in movimientos  | filter:searchText">
+                                <td ng-class="{'custom-class': movimiento.pagado == '1', 'default-color': movimiento.pagado == '0'}" ><a href="" ng-click="obtenermovimientos_data(movimiento.pk)">{{movimiento.orden}}</a></td>
+                                <td ng-class="{'custom-class': movimiento.pagado == '1', 'default-color': movimiento.pagado == '0'}">{{movimiento.doctor}}</td>
+                                <td ng-class="{'custom-class': movimiento.pagado == '1', 'default-color': movimiento.pagado == '0'}">{{movimiento.paciente}}</td>
+                                <td ng-class="{'custom-class': movimiento.pagado == '1', 'default-color': movimiento.pagado == '0'}">{{movimiento.monto}}</td>
+                                <td ng-class="{'custom-class': movimiento.pagado == '1', 'default-color': movimiento.pagado == '0'}">{{movimiento.fecha}}</td>
                             </tr>
                         </table>
                         

@@ -22,7 +22,7 @@ from .forms import UserCreationForm,UserChangeForm
 # Create your views here.
 
 class InicioView(TemplateView):
-    template_name = "templates/index.html"
+    template_name = "templates/inicio.html"
     def dispatch(self, request, *args, **kwargs):
         if  request.user.is_prueba():
             messages.success(request, 'No tienes permisos para este apartado!')

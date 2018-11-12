@@ -36,3 +36,11 @@ class EliminarCita(DeleteView):
     model = Cita
     template_name = 'cita/EliminarCita.html'
     success_url = reverse_lazy("citaUrl:ListadoCita")
+
+class VerCita(DetailView):
+    model = Cita
+    template_name = 'cita/VerCita.html'
+    
+
+
+
