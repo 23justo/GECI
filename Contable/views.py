@@ -21,6 +21,10 @@ def ObtenerMovimientos(request, *args, **kwargs):
     orden = 0
     for mov_cita in query_movimiento_citas:
         orden+=1
+        if mov_cita.pagado == False:
+            mov_cita.pagado = 0
+        else:
+            mov_cita.pagado = 1
         diccionario = {
             'pk':mov_cita.pk,
             'orden':orden,

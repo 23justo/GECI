@@ -1,0 +1,65 @@
+{% load staticfiles %}
+<style>
+    .contenedor{
+        border: 1px solid black;
+    }
+    .encabezado{
+        color: #142b80;
+    }
+    .receta{
+        width: 90%;
+        padding-left: 5%;
+    }
+    .separador{
+        border-bottom: 7px solid #142b80;
+        padding-left: 25%;
+    }
+    .descripcion{
+        color: black;
+    }
+    .firma{
+        border-top: 1px solid black;
+        text-align: center;
+        color: black;
+        
+    }
+</style>
+<div class="contenedor" width="100%">
+    <table width="100%" class="receta">
+        <body class="encabezado">
+            <tr>
+                <th>{{cita.doctor.nombres}},{{cita.doctor.apellidos}}</th>
+            </tr>
+            <tr>
+                <th >{{cita.doctor.especialidad}}</th>
+            </tr>
+            <tr>
+                <th >DPI: {{cita.doctor.dpi}}  Direccion: {{cita.doctor.direccion_clinica}}</th>
+            </tr>
+            <tr>
+                <th class="separador"></th>
+            </tr>
+        </tbody>
+    </table>
+    <table width="100%" class="receta">
+       <tbody class="encabezado">
+           <tr>
+               <td colspan="3" class="descripcion">{{cita.descripcion}}</td>
+           </tr>
+           <tr>
+               <td colspan="3" class="separador"></td>
+           </tr>
+           <tr>
+                <td>{{cita.doctor.clinica.nombre}}</td>
+                <td style="text-align:right;" colspan="2">{{cita.doctor.clinica.direccion}}</br>
+                    {{cita.doctor.clinica.telefono}}
+                </td>
+           </tr>
+           <tr>
+               <td width="33%"></td>
+               <td width="33%"class="firma">{{cita.doctor.nombres}},{{cita.doctor.apellidos}}</td>
+               <td width="33%"></td>
+           </tr>
+       </tbody>     
+    </table>
+</div>

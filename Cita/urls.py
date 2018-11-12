@@ -1,7 +1,7 @@
 from django.conf.urls import url,include
 from . import views
 from django.contrib.auth.decorators import login_required
-from .views import CrearCita,ListadoCita,EditarCita,EliminarCita
+from .views import CrearCita,ListadoCita,EditarCita,EliminarCita,VerCita
 
 """ ejemplo de url: categorias/registrar """
 
@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^listadocita$', login_required(ListadoCita.as_view()), name='ListadoCita'),
     url(r'^editarcita/(?P<pk>\d+)$', login_required(EditarCita.as_view()), name='EditarCita'),
     url(r'^eliminarcita/(?P<pk>\d+)$', login_required(EliminarCita.as_view()), name='EliminarCita'),
+    url(r'^vercita/(?P<pk>\d+)$', login_required(VerCita.as_view()), name='VerCita'),
 ]

@@ -11,6 +11,7 @@ app.controller(
         $scope.obtenermovimientos = function(){
             $http.get('/movimientocita/api-ObtenerMovimientos').success(function(data){
                 $scope.movimientos = angular.fromJson(data);
+                console.log($scope.movimientos);
             }).error(function(err){
             });
         };
