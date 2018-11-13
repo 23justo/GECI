@@ -1,0 +1,1 @@
+web: gunicorn GECISoft.wsgi --log-file -

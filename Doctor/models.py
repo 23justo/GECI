@@ -11,6 +11,7 @@ class Doctor(models.Model):
     especialidad = models.CharField(max_length = 75)
     direccion_clinica = models.CharField(max_length = 150)
     dpi = models.CharField(max_length = 20)
+    colegiado = models.CharField(max_length = 50)
     
     def __str__(self):
         return self.nombres + self.apellidos

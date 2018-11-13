@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-
+from decouple import config
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+%dl-j_d@x=f()yr1u$rvc4q=7%se8a(i837kzh!z(hc5ysim0'
-
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('CONFIG',default=False, cast=bool)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','gecisoft.herokuapp.com']
 
 
 # Application definition
@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'Usuarios',
     'Clinica',
     'Paciente',
-    'Doctor',
     'Cita',
+    'Doctor',
     'Contable',
     'widget_tweaks',
     'social_django',
@@ -93,6 +93,10 @@ WSGI_APPLICATION = 'GECISoft.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+DATABASES = {
+    'default': config('DATABASE_URL', default=default_dburl, cast=dburl), 
+}
 
 DATABASES = {
     'default': {
@@ -153,6 +157,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     # '/var/www/static/',
 ]
+
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 AUTH_USER_MODEL = 'Usuarios.usuario'
