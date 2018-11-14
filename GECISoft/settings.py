@@ -25,7 +25,7 @@ SECRET_KEY = '+%dl-j_d@x=f()yr1u$rvc4q=7%se8a(i837kzh!z(hc5ysim0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','justojul23.pythonanywhere.com']
 
 
 # Application definition
@@ -71,8 +71,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',  # <- Here
-                'social_django.context_processors.login_redirect', # <- Here
             ],
         },
     },
@@ -84,7 +82,7 @@ AUTHENTICATION_BACKENDS = (
  'social_core.backends.google.GoogleOAuth2',  # for Google authentication
  'social_core.backends.github.GithubOAuth2',  # for Github authentication
  'social_core.backends.facebook.FacebookOAuth2',  # for Facebook authentication
- 
+
  'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -147,15 +145,12 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '../static/'
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    # '/var/www/static/',
-]
+STATIC_ROOT = '/home/justojul23/GECI/static/'
+
+
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
-#AUTH_USER_MODEL = 'Usuarios.usuario'
+AUTH_USER_MODEL = 'Usuarios.usuario'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '871242023022-9dt227o6o658lhmo2nmpao28o6ohhaaj.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '4wHn4GN3rlAa1k2MqfgmXBqp'
 SOCIAL_AUTH_FACEBOOK_KEY = '347134039374915'  # App ID
