@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'Usuarios',
     'Clinica',
     'Paciente',
-    'Doctor',
     'Cita',
+    'Doctor',
     'Contable',
     'widget_tweaks',
     'social_django',
@@ -155,7 +155,7 @@ STATICFILES_DIRS = [
 ]
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
-AUTH_USER_MODEL = 'Usuarios.usuario'
+#AUTH_USER_MODEL = 'Usuarios.usuario'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '871242023022-9dt227o6o658lhmo2nmpao28o6ohhaaj.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '4wHn4GN3rlAa1k2MqfgmXBqp'
 SOCIAL_AUTH_FACEBOOK_KEY = '347134039374915'  # App ID
