@@ -25,6 +25,14 @@
             </div>
           </div>
           <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Apellidos<span class="required"></span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                {% render_field form.apellidos class="form-control col-md-3 col-xs-12" %}
+                {{form.nombres.errors}}
+              </div>
+            </div>
+          <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Sexo<span class="required"></span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -48,23 +56,15 @@
               {{form.dpi.errors}}
             </div>
           </div>
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Telefono Personal<span class="required"></span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              {% render_field form.telefono_personal class="form-control col-md-3 col-xs-12" %}
-              {{form.telefono_personal.errors}}
-            </div>
-          </div>
-    </div>
-
-   <div class="col-md-6 col-sm-12 col-xs-12">
-     <div class="form-group">
-      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Apellidos<span class="required"></span>
+        </div>
+        
+  <div class="col-md-6 col-sm-12 col-xs-12">
+    <div class="form-group">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Telefono Personal<span class="required"></span>
       </label>
       <div class="col-md-6 col-sm-6 col-xs-12">
-        {% render_field form.apellidos class="form-control col-md-3 col-xs-12" %}
-        {{form.nombres.errors}}
+        {% render_field form.telefono_personal class="form-control col-md-3 col-xs-12" %}
+        {{form.telefono_personal.errors}}
       </div>
     </div>
     <div class="form-group">

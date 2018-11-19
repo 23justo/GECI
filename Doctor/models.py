@@ -13,6 +13,6 @@ class Doctor(models.Model):
     dpi = models.CharField(max_length = 20)
     
     def __str__(self):
-        return self.nombres + self.apellidos
+        return self.nombres + ", "+self.apellidos
 
     
