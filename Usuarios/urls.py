@@ -3,7 +3,7 @@ from django.conf.urls import url,include
 from . import views
 from django.contrib.auth.decorators import login_required
 from .views import CrearUsuario,ListadoUsuario,EditarUsuario,EliminarUsuario
-
+from django.conf.urls import include
 """ ejemplo de url: categorias/registrar """
 
 """ los pk en la url de editar y eliminar sirven para saber sobre que dato

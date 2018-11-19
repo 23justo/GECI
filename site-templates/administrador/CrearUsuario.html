@@ -88,13 +88,63 @@
                       {{form.campo.errors}}
                   </div>
               </div>
+              <h3 style="text-align:center">Asignacion de Permisos</h3>
               <div class="form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">{% trans "Permisos de Edicion y Eliminacion" %} <span class="required"></span>
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">{% trans "Usuario Administrador" %} <span class="required"></span>
                           </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
                       {% render_field form.is_staff class="switchery switchery-default" %} </div>
+                      {{form.is_staff.errors}}
 
               </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">{% trans "Permisos Modulo Doctores" %} <span class="required"></span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {% render_field form.modulo_doctor class="form-control col-md-7 col-xs-12" %} 
+                    {{form.modulo_doctor.errors}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">{% trans "Permisos Modulo Secretaria" %} <span class="required"></span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {% render_field form.modulo_secretaria class="form-control col-md-7 col-xs-12" %} 
+                    {{form.modulo_secretaria.errors}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">{% trans "Permisos Modulo Pacientes" %} <span class="required"></span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {% render_field form.modulo_paciente class="form-control col-md-7 col-xs-12" %} 
+                    {{form.modulo_paciente.errors}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">{% trans "Permisos Modulo Citas" %} <span class="required"></span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {% render_field form.modulo_citas class="form-control col-md-7 col-xs-12" %} 
+                    {{form.modulo_citas.errors}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">{% trans "Permisos Modulo Contable" %} <span class="required"></span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {% render_field form.modulo_contable class="form-control col-md-7 col-xs-12" %} 
+                    {{form.modulo_contable.errors}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">{% trans "Permisos Modulo Usuario" %} <span class="required"></span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {% render_field form.modulo_usuario class="form-control col-md-7 col-xs-12" %} 
+                    {{form.modulo_usuario.errors}}
+                </div>
+            </div>
 
               <div class="ln_solid"></div>
               <div class="form-group">

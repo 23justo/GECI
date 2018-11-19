@@ -26,6 +26,12 @@ class UserCreationForm(forms.ModelForm):
             'telefono',
             'visible',
             'clinica',
+            'modulo_doctor',
+            'modulo_citas',
+            'modulo_paciente',
+            'modulo_contable',
+            'modulo_secretaria',
+            'modulo_usuario',
         ]
     def clean_password1(self):
         password = self.cleaned_data.get("password")

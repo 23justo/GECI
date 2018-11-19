@@ -30,6 +30,12 @@ class Usuario(AbstractBaseUser):
         ('Secretaria','Secretaria'),
         ('Prueba','Prueba'),
     )
+    tipos_permisos = (
+        (1,'Lectura'),
+        (2,'Escritura'),
+        (3,'Eliminacion'),
+        (4,'Todos'),
+    )
     id = models.AutoField(primary_key = True)
     username = models.CharField(max_length = 45,unique = True)
     nombres = models.CharField(max_length = 150)
@@ -44,6 +50,12 @@ class Usuario(AbstractBaseUser):
     visible = models.BooleanField(default=True)
     # la clinica con id 1 solo sirve para poder asignar a los admin 
     clinica = models.ForeignKey(to='Clinica.Clinica',default=1)
+    modulo_doctor = models.IntegerField(choices=tipos_permisos)
+    modulo_citas = models.IntegerField(choices=tipos_permisos)
+    modulo_paciente = models.IntegerField(choices=tipos_permisos)
+    modulo_contable = models.IntegerField(choices=tipos_permisos)
+    modulo_secretaria = models.IntegerField(choices=tipos_permisos)
+    modulo_usuario = models.IntegerField(choices=tipos_permisos)
     objects = UsuarioManager()
     USERNAME_FIELD = 'username'
     def get_short_name(self):
@@ -76,6 +88,81 @@ class Usuario(AbstractBaseUser):
     	return self.nombres
     def __str__(self):
     	return self.nombres
+    #permisos doctor
+    def lectura_doctor(self):
+        if self.modulo_doctor == 4 or self.modulo_doctor == 1:
+            return True
+        else:
+            return False
+    
+    def escritura_doctor(self):
+        if self.modulo_doctor == 4 or self.modulo_doctor == 2:
+            return True
+        else:
+            return False
+    def eliminacion_doctor(self):
+        if self.modulo_doctor == 4 or self.modulo_doctor == 3:
+            return True
+        else:
+            return False
+    #fin permisos doctor
+    #permisos citas
+    def lectura_citas(self):
+        if self.modulo_citas == 4 or self.modulo_citas == 1:
+            return True
+        else:
+            return False
+    
+    def escritura_citas(self):
+        if self.modulo_citas == 4 or self.modulo_citas == 2:
+            return True
+        else:
+            return False
+    def eliminacion_citas(self):
+        if self.modulo_citas == 4 or self.modulo_citas == 3:
+            return True
+        else:
+            return False
+    #fin permisos citas
+    #permisos paciente
+    def lectura_paciente(self):
+        if self.modulo_paciente == 4 or self.modulo_paciente == 1:
+            return True
+        else:
+            return False
+    
+    def escritura_paciente(self):
+        if self.modulo_paciente == 4 or self.modulo_paciente == 2:
+            return True
+        else:
+            return False
+    def eliminacion_paciente(self):
+        if self.modulo_paciente == 4 or self.modulo_paciente == 3:
+            return True
+        else:
+            return False
+    #fin permisos paciente
+    #permisos contable
+    def lectura_contable(self):
+        if self.modulo_contable == 4 or self.modulo_contable == 1:
+            return True
+        else:
+            return False
+    
+    def escritura_contable(self):
+        if self.modulo_contable == 4 or self.modulo_contable == 2:
+            return True
+        else:
+            return False
+    def eliminacion_contable(self):
+        if self.modulo_contable == 4 or self.modulo_contable == 3:
+            return True
+        else:
+            return False
+    #fin permisos contable
+
+    
+    
 
 
     def has_module_perms(self,perm_list):
