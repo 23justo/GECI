@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-from Usuarios.views import InicioView
+from Usuarios.views import InicioView,EnvioCorreo
 from django.contrib.auth.views import login,logout_then_login,logout
 from django.contrib.auth.decorators import login_required
 from django.conf.urls.static import static
@@ -24,6 +24,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls import include
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^enviocorreo/',EnvioCorreo.as_view(),name='EnvioCorreo' ),
     url(r'^login',login,{'template_name':'templates/login.html'},name='login'),
     url(r'^logout',logout,{'next_page':'login'},name='logout'),
     url(r'^auth/', include('social_django.urls', namespace='social')),

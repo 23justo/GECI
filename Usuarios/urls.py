@@ -2,7 +2,7 @@
 from django.conf.urls import url,include
 from . import views
 from django.contrib.auth.decorators import login_required
-from .views import CrearUsuario,ListadoUsuario,EditarUsuario,EliminarUsuario
+from .views import CrearUsuario,ListadoUsuario,EditarUsuario,EliminarUsuario,EnvioCorreo
 from django.conf.urls import include
 """ ejemplo de url: categorias/registrar """
 

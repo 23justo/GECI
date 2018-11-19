@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.conf import settings
 from django.views.generic.edit import UpdateView,CreateView,DeleteView
 from django.views.generic import ListView, TemplateView,View,DetailView
 from django.core.urlresolvers import reverse_lazy
@@ -16,7 +17,7 @@ from django.core.validators import validate_email
 from django.http import JsonResponse
 from django.contrib import messages
 from .models import Usuario
-
+from django.core.mail import send_mail
 from Doctor.models import Doctor
 from Paciente.models import Paciente
 from Usuarios.models import Usuario
@@ -86,5 +87,18 @@ class EliminarUsuario(DeleteView):
     template_name = 'usuarios/EliminarUsuario.html'
     success_url = reverse_lazy("adminUrl:ListadoUsuario")
 
+
+class EnvioCorreo(CreateView):
+    model = None
+    template_name = "usuarios/EnvioCorreo.html"
+    def post(self, request, *args, **kwargs):
+        print(request['POST'])
+    def get_queryset(self):
+        if self.queryset is None:
+            return None
+        else:
+            return None
+            
+        return None
 
 
