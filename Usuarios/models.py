@@ -50,12 +50,12 @@ class Usuario(AbstractBaseUser):
     visible = models.BooleanField(default=True)
     # la clinica con id 1 solo sirve para poder asignar a los admin 
     clinica = models.ForeignKey(to='Clinica.Clinica',default=1)
-    modulo_doctor = models.IntegerField(choices=tipos_permisos)
-    modulo_citas = models.IntegerField(choices=tipos_permisos)
-    modulo_paciente = models.IntegerField(choices=tipos_permisos)
-    modulo_contable = models.IntegerField(choices=tipos_permisos)
-    modulo_secretaria = models.IntegerField(choices=tipos_permisos)
-    modulo_usuario = models.IntegerField(choices=tipos_permisos)
+    modulo_doctor = models.IntegerField(choices=tipos_permisos,null=True)
+    modulo_citas = models.IntegerField(choices=tipos_permisos,null=True)
+    modulo_paciente = models.IntegerField(choices=tipos_permisos,null=True)
+    modulo_contable = models.IntegerField(choices=tipos_permisos,null=True)
+    modulo_secretaria = models.IntegerField(choices=tipos_permisos,null=True)
+    modulo_usuario = models.IntegerField(choices=tipos_permisos,null=True)
     objects = UsuarioManager()
     USERNAME_FIELD = 'username'
     def get_short_name(self):
