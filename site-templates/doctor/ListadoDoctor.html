@@ -35,14 +35,14 @@
                      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                        Acciones <span class="caret"></span>
                      </button>
-                     <ul class="dropdown-menu">
+                    <ul class="dropdown-menu">
                       <li><a href="{% url 'doctorUrl:EditarDoctor' doctor.pk %}">Editar</a></li>
-                       <li><a href="{% url 'doctorUrl:EliminarDoctor' doctor.pk %}">Eliminar</a></li>
-                     </ul>
+                      <li><a href="{% url 'doctorUrl:EliminarDoctor' doctor.pk %}">Eliminar</a></li>
+                    </ul>
                    </div>
                 </td>
                </tr>
-               {% endfor %}
+                {% endfor %}
              </tbody>
            </table>
        </div>

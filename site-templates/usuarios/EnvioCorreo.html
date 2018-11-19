@@ -1,5 +1,5 @@
 {% load staticfiles %}
-
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,7 +74,7 @@
 
               <div>
                 <i class="fa fa-phone"></i>
-                <p>+1 5589 55488 55s</p>
+                <p>+502 77636344</p>
               </div>
             </div>
 
@@ -87,36 +87,35 @@
             </div>
 
           </div>
+          
+          
+              <form action="" method="POST"  class="contactForm">
+              {% csrf_token %}
 
-          <div class="col-lg-5 col-md-8">
-            <div class="form">
-              <div id="sendmessage">Tu mensaje ha sido enviado . Gracias!</div>
-              <div id="errormessage"></div>
-              <form action="" method="post" role="form" class="contactForm">
                 <div class="form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Tu Nombre Completo" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                  <div class="validation"></div>
+                  {% render_field form.nombre_completo class="form-control" name="email" id="email" placeholder="Tu Nombre" data-rule="email"  %}
+                  
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Tu correo" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validation"></div>
+                  {% render_field form.correo class="form-control" name="email" id="email" placeholder="Tu correo" data-rule="email"  %}
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Tema" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                  <div class="validation"></div>
+                  {% render_field form.tema class="form-control" name="email" id="email" placeholder="Tema" data-rule="email"  %}
+
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Mensaje"></textarea>
-                  <div class="validation"></div>
+                  {% render_field form.mensaje class="form-control" name="email" id="email" placeholder="Tu Mensaje" data-rule="email"  %}
+
                 </div>
                 <div class="text-center"><button type="submit">Enviar</button></div>
               </form>
             </div>
           </div>
         </div>
-
       </div>
     </section>
+
+
 
   </main>
 
@@ -140,22 +139,7 @@
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
-  <!-- JavaScript Libraries -->
-  <script src='{% static "landign/lib/jquery/jquery.min.js" %}'></script>
-  <script src='{% static "landign/lib/jquery/jquery-migrate.min.js" %}'></script>
-  <script src='{% static "landign/lib/bootstrap/js/bootstrap.bundle.min.js" %}'></script>
-  <script src='{% static "landign/lib/easing/easing.min.js" %}'></script>
-  <script src='{% static "landign/lib/wow/wow.min.js" %}'></script>
-  <script src='{% static "landign/lib/waypoints/waypoints.min.js" %}'></script>
-  <script src='{% static "landign/lib/counterup/counterup.min.js" %}'></script>
-  <script src='{% static "landign/lib/superfish/hoverIntent.js" %}'></script>
-  <script src='{% static "landign/lib/superfish/superfish.min.js" %}'></script>
 
-  <!-- Contact Form JavaScript File -->
-  <script src='{% static "landign/contactform/contactform.js" %}'></script>
-
-  <!-- Template Main Javascript File -->
-  <script src='{% static "landign/js/main.js" %}'></script>
 
 </body>
 </html>

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'Contable',
     'widget_tweaks',
     'social_django',
+    'Solicitudes',
 ]
 
 MIDDLEWARE = [

@@ -21,6 +21,7 @@ from django.core.mail import send_mail
 from Doctor.models import Doctor
 from Paciente.models import Paciente
 from Usuarios.models import Usuario
+from Solicitudes.models import Solicitudes
 from Contable.models import MovimientoCita
 from Cita.models import Cita
 
@@ -37,8 +38,8 @@ class ActivityMixin(object):
         context['pacientes'] = Paciente.objects.filter(clinica = self.request.user.clinica)
         context['usuarios'] = Usuario.objects.filter(clinica = self.request.user.clinica)
         context['secretaria'] = Usuario.objects.filter(clinica = self.request.user.clinica).filter(user_type='Secretaria')
-        
-        
+        if(self.request.user.is_admin()):
+            context['solicitudes'] = Solicitudes.objects.all()
         return context
 
 class InicioView(ActivityMixin,TemplateView):
@@ -49,6 +50,7 @@ class InicioView(ActivityMixin,TemplateView):
             print(messages)
             return redirect("logout")
         return super(InicioView, self).dispatch(request, *args, **kwargs)
+    
 
         
 class CrearUsuario(CreateView):
@@ -88,7 +90,17 @@ class EliminarUsuario(DeleteView):
     success_url = reverse_lazy("adminUrl:ListadoUsuario")
 
 
-class EnvioCorreo(TemplateView):
+class EnvioCorreo(CreateView):
+    model = Solicitudes
+    fields =[
+        'correo',
+        'nombre_completo',
+        'tema',
+        'mensaje',
+    ]
     template_name = "usuarios/EnvioCorreo.html"
+    success_url = reverse_lazy("inicio")
+
+    
 
 
