@@ -88,17 +88,7 @@ class EliminarUsuario(DeleteView):
     success_url = reverse_lazy("adminUrl:ListadoUsuario")
 
 
-class EnvioCorreo(CreateView):
-    model = None
+class EnvioCorreo(TemplateView):
     template_name = "usuarios/EnvioCorreo.html"
-    def post(self, request, *args, **kwargs):
-        print(request['POST'])
-    def get_queryset(self):
-        if self.queryset is None:
-            return None
-        else:
-            return None
-            
-        return None
 
 
