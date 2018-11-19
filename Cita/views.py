@@ -47,7 +47,7 @@ class EditarCita(UpdateView):
         if  not request.user.escritura_citas():
             messages.success(request, 'No tienes permisos para este apartado!')
             return redirect("logout")
-        return super(InicioView, self).dispatch(request, *args, **kwargs)
+        return super(EditarCita, self).dispatch(request, *args, **kwargs)
 
 class EliminarCita(DeleteView):
     model = Cita
@@ -57,7 +57,7 @@ class EliminarCita(DeleteView):
         if not request.user.eliminacion_citas():
             messages.success(request, 'No tienes permisos para este apartado!')
             return redirect("logout")
-        return super(InicioView, self).dispatch(request, *args, **kwargs)
+        return super(EliminarCita, self).dispatch(request, *args, **kwargs)
 
 class VerCita(DetailView):
     model = Cita
