@@ -8,6 +8,8 @@ from django.db.models import CharField, Value
 import json
 from .models import *
 from .forms import *
+from django.contrib import messages
+from django.shortcuts import redirect
 from Cita.models import *
 
 # Create your views here.
@@ -16,6 +18,9 @@ class BaseContable(TemplateView):
     template_name = 'Contable/BaseContable.html'
 
 def ObtenerMovimientos(request, *args, **kwargs):
+    if  not request.user.lectura_contable:
+        messages.success(request, 'No tienes permisos para este apartado!')
+        return redirect("inicio")
     lista_mov_citas = []
     query_movimiento_citas = MovimientoCita.objects.all()
     orden = 0
@@ -84,3 +89,8 @@ class CrearMovimientoCita(CreateView):
         self.object = form.save(commit=False)
         self.object.cita = cita
         return super(CrearMovimientoCita, self).form_valid(form)
+    def dispatch(self, request, *args, **kwargs):
+        if  not request.user.escritura_contable():
+            messages.success(request, 'No tienes permisos para este apartado!')
+            return redirect("inicio")
+        return super(CrearMovimientoCita, self).dispatch(request, *args, **kwargs)

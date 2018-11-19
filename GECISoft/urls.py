@@ -21,6 +21,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
+from django.conf.urls import include
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login',login,{'template_name':'templates/login.html'},name='login'),
