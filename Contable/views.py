@@ -46,6 +46,13 @@ def ObtenerMovimientos(request, *args, **kwargs):
     print(lista_mov_citas)
     return JsonResponse(json.dumps(lista_mov_citas),safe=False)
 
+
+
+def ObtenerMoneda(request, *args, **kwargs):
+    moneda = request.user.clinica.moneda
+    return JsonResponse(moneda,safe=False)
+
+
 def ObtenerMovimientoEspecifico(request, *args, **kwargs):
     lista_mov_citas = []
     mov_cita = MovimientoCita.objects.get(pk=kwargs['pk'])

@@ -7,6 +7,7 @@ app.controller(
         $scope.movimientos;
         $scope.movimiento_data = null;
         $scope.movimiento_data_toggle = false;
+        $scope.moneda = 'GTQ';
 
         $scope.obtenermovimientos = function(){
             $http.get('/movimientocita/api-ObtenerMovimientos').success(function(data){
@@ -26,6 +27,16 @@ app.controller(
             });
         };
 
+
+        $scope.obtenermoneda = function(){
+            $http.get('/movimientocita/api-ObtenerMoneda').success(function(data){
+                $scope.moneda = data;
+                console.log(data);
+            }).error(function(err){
+            });
+        };
+
+
         $scope.search = function (item) {
             if ($scope.searchText == undefined) {
                 return true;
@@ -44,6 +55,7 @@ app.controller(
 
         var init = function () {
             $scope.obtenermovimientos();
+            $scope.obtenermoneda();
          };
          
          init();

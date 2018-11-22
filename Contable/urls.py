@@ -2,7 +2,7 @@ from django.conf.urls import url,include
 from . import views
 from django.contrib.auth.decorators import login_required
 # from .views import CrearMovimientoCita,ListadoMovimientoCita,EditarMovimientoCita,EliminarMovimientoCita
-from .views import BaseContable,ObtenerMovimientos,ObtenerMovimientoEspecifico,CrearMovimientoCita
+from .views import BaseContable,ObtenerMovimientos,ObtenerMovimientoEspecifico,CrearMovimientoCita,ObtenerMoneda
 
 
 """ ejemplo de url: categorias/registrar """
@@ -14,6 +14,8 @@ url(r'^basecontable$', login_required(BaseContable.as_view()), name='BaseContabl
 # retorna un json con los movimientos solicitados
 url(r'^api-ObtenerMovimientos$', ObtenerMovimientos, name='api-ObtenerMovimientos'),
 url(r'^api-ObtenerMovimientoEspecifico/(?P<pk>\d+)$', ObtenerMovimientoEspecifico, name='api-ObtenerMovimientoEspecifico'),
+url(r'^api-ObtenerMoneda$', ObtenerMoneda, name='api-ObtenerMoneda'),
+
 
 url(r'^crearmovimientocita/(?P<pk>\d+)$', login_required(CrearMovimientoCita.as_view()), name='CrearMovimientoCita'),
 # url(r'^listadomovimientocita$', login_required(ListadoMovimientoCita.as_view()), name='ListadoMovimientoCita'),

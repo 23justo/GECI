@@ -51,7 +51,7 @@
                                 <td ng-class="{'custom-class': movimiento.pagado == '1', 'default-color': movimiento.pagado == '0'}" ><a href="" ng-click="obtenermovimientos_data(movimiento.pk)">{{movimiento.orden}}</a></td>
                                 <td ng-class="{'custom-class': movimiento.pagado == '1', 'default-color': movimiento.pagado == '0'}">{{movimiento.doctor}}</td>
                                 <td ng-class="{'custom-class': movimiento.pagado == '1', 'default-color': movimiento.pagado == '0'}">{{movimiento.paciente}}</td>
-                                <td ng-class="{'custom-class': movimiento.pagado == '1', 'default-color': movimiento.pagado == '0'}">{{movimiento.monto}}</td>
+                                <td ng-class="{'custom-class': movimiento.pagado == '1', 'default-color': movimiento.pagado == '0'}">{{moneda}} {{movimiento.monto | number : 2}}</td>
                                 <td ng-class="{'custom-class': movimiento.pagado == '1', 'default-color': movimiento.pagado == '0'}">{{movimiento.fecha}}</td>
                             </tr>
                         </table>
