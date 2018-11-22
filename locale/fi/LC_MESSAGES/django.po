@@ -156,7 +156,7 @@ msgstr "Actions"
 
 #: .\site-templates\cita\ListadoCita.html:41
 msgid "Agregar Movimiento"
-msgstr "Add Biling Charge"
+msgstr "Add Billing Charge"
 
 #: .\site-templates\cita\ListadoCita.html:42
 msgid "Imprimir Receta"
