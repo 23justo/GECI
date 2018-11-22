@@ -23,7 +23,7 @@ def ObtenerMovimientos(request, *args, **kwargs):
         messages.success(request, 'No tienes permisos para este apartado!')
         return redirect("inicio")
     lista_mov_citas = []
-    query_movimiento_citas = MovimientoCita.objects.all()
+    query_movimiento_citas = MovimientoCita.objects.filter(cita__doctor__clinica__pk = request.user.clinica.pk)
     orden = 0
     for mov_cita in query_movimiento_citas:
         orden+=1
