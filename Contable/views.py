@@ -11,7 +11,8 @@ from .forms import *
 from django.contrib import messages
 from django.shortcuts import redirect
 from Cita.models import *
-
+# currency
+import djmoney_rates
 # Create your views here.
 
 class BaseContable(TemplateView):

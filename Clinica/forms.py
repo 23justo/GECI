@@ -9,5 +9,9 @@ class ClinicaModelsForms(forms.ModelForm):
         fields = [
         'nombre',
         'direccion',
-        'telefono'
+        'telefono',
+        'moneda',
+        'color_menu',
+        'color_footer',
+        'color_texto_menu',
         ]

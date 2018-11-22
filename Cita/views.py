@@ -27,6 +27,10 @@ class CrearCita(CreateView):
 class ListadoCita(ListView):
     model = Cita
     template_name = 'cita/ListadoCita.html'
+    def get_queryset(self):
+        print(Cita.objects.all())
+        queryset = Cita.objects.filter(doctor__clinica__pk = self.request.user.clinica.pk)
+        return queryset
     def dispatch(self, request, *args, **kwargs):
         if not request.user.lectura_citas():
             messages.success(request, 'No tienes permisos para este apartado!')

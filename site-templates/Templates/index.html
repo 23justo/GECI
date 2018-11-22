@@ -1,5 +1,11 @@
 {% load staticfiles %}
 {% load i18n %}
+<style>
+    .left_col {
+    background: {{user.clinica.color_menu}} !important;
+}
+
+</style>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,6 +64,7 @@
                     <div class="profile clearfix">
 
                       <div class="profile_info">
+                          <h2>{{user.clinica.nombre}}</h2>
                           <span>{% trans "Bienvenido" %}</span>
                           <h2>{{user.nombre}}</h2>
                           <h2>{{user.username}}</h2>

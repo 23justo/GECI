@@ -24,8 +24,6 @@ from Usuarios.models import Usuario
 from Solicitudes.models import Solicitudes
 from Contable.models import MovimientoCita
 from Cita.models import Cita
-
-
 ##### Importaciones Propias
 from .models import Usuario
 from .forms import UserCreationForm,UserChangeForm

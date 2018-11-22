@@ -15,6 +15,7 @@ EMAIL_HOST_USER = 'gecisot@gmail.com'
 EMAIL_HOST_PASSWORD = 'jarpjul23'
 EMAIL_PORT = 587
 import os
+import importlib
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'social_django',
     'Solicitudes',
+    'djmoney_rates',
 ]
 
 MIDDLEWARE = [
@@ -128,6 +130,13 @@ DATETIME_INPUT_FORMATS = [
     '%Y-%m-%d %H:%M',        # '2006-10-25 14:30'
     '%Y-%m-%d',              # '2006-10-25'
 ]
+
+DJANGO_MONEY_RATES = {
+    'DEFAULT_BACKEND': 'djmoney_rates.backends.OpenExchangeBackend',
+    'OPENEXCHANGE_URL': 'http://openexchangerates.org/api/latest.json',
+    'OPENEXCHANGE_APP_ID': 'dfd2b3895ea246ec9db752fd8f9871ec',
+    'OPENEXCHANGE_BASE_CURRENCY': 'Q',
+}
 
 
 # Internationalization
