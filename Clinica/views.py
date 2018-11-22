@@ -46,9 +46,9 @@ def conversion_moneda(clinica_pk,moneda_anterior,moneda_nueva):
     for movimiento in movimientos:
         if moneda_anterior != 'EUR':
             monto_en_euros = movimiento.monto * (1 / rates[moneda_anterior])
-            movimiento.monto = monto_en_euros * moneda_nueva
+            movimiento.monto = monto_en_euros * rates[moneda_nueva]
         else:
-            movimiento.monto = movimiento.monto * moneda_nueva
+            movimiento.monto = movimiento.monto * rates[moneda_nueva]
         movimiento.save(update_fields=["monto"]) 
         
         
