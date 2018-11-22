@@ -41,17 +41,16 @@ def conversion_moneda(clinica_pk,moneda_anterior,moneda_nueva):
     req = urllib.request.Request(url,headers={'User-Agent': 'howCode Currency Bot'})
     data = urllib.request.urlopen(req).read()
     data = json.loads(data.decode('utf-8'))
-    print(data)
     rates = data["rates"]
-
     movimientos = MovimientoCita.objects.filter(cita__doctor__clinica__pk = clinica_pk)
     for movimiento in movimientos:
-        print("1")
-        print(movimiento.monto)
-        movimiento.monto = movimiento.monto * rates[moneda_nueva]
+        if moneda_anterior != 'EUR':
+            monto_en_euros = movimiento.monto * (1 / rates[moneda_anterior])
+            movimiento.monto = monto_en_euros * moneda_nueva
+        else:
+            movimiento.monto = movimiento.monto * moneda_nueva
         movimiento.save(update_fields=["monto"]) 
-        print("2")
-        print(movimiento.monto)
+        
         
         
     
